@@ -4,9 +4,11 @@ void main() {
   callWeb("Facebook", port: 443, protocal: "https"); //เรียกฟังชั่น callWeb
 }
 
+//ฟังชั่น callGen
 String callGen(int year) =>
     (year >= 1996) ? "Gen Z" : "Gen Y"; //เขียนแบบ arrow function และ if แบบสั้น
 
+//ฟังชั่น callColor
 int callColor([String newColor = "pink"]) {
   List<dynamic> color = ["red", "green", "blue"];
   color.add(newColor);
@@ -16,6 +18,7 @@ int callColor([String newColor = "pink"]) {
   return color.length;
 }
 
+//ฟังชั่น callWeb
 void callWeb(String web,
         {int port = 80,
         String protocal = "http"}) => //ฟังชั่นรับค่าแบบกำหนดชื่อ
