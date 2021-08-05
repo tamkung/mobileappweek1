@@ -5,7 +5,7 @@ void main() {
 }
 
 String callGen(int year) =>
-    (year >= 1996) ? "Gen Z" : "Gen Y"; //เขียนแบบ arrow function
+    (year >= 1996) ? "Gen Z" : "Gen Y"; //เขียนแบบ arrow function และ if แบบสั้น
 
 int callColor([String newColor = "pink"]) {
   List<dynamic> color = ["red", "green", "blue"];
