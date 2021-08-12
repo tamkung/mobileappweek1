@@ -3,4 +3,3 @@ class Problems {
     print("Covid-19");
   }
 }
-//
