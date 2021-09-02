@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobileappweek1/config/constant.dart';
 
 class Index extends StatelessWidget {
   @override
@@ -6,6 +7,37 @@ class Index extends StatelessWidget {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+              title: const Text('Item 1'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: const Text('Item 2'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+          ],
+        ),
+      ),
       body: Container(
         alignment: Alignment.center,
         child: Stack(
@@ -46,7 +78,7 @@ class Index extends StatelessWidget {
                 Text(
                   'Welcome to KMUTNB',
                   style: TextStyle(
-                    color: Colors.amber[900],
+                    color: pColor,
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                   ),
@@ -65,34 +97,38 @@ class Index extends StatelessWidget {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.amber[900],
-                    padding: EdgeInsets.fromLTRB(120, 15, 120, 15),
+                    primary: tColor,
+                    padding: EdgeInsets.fromLTRB(115, 15, 115, 15),
                     shape: StadiumBorder(),
                   ),
                   child: Text(
-                    'LOGIN',
+                    'SIGN IN',
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'Login');
+                  },
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.amber[900],
+                    primary: tColor,
                     padding: EdgeInsets.fromLTRB(110, 15, 110, 15),
                     shape: StadiumBorder(),
                   ),
                   child: Text(
-                    'SIGNUP',
+                    'SIGN UP',
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'Register');
+                  },
                 ),
               ],
             )
