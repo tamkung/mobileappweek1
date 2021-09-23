@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobileappweek1/config/constant.dart';
+import 'package:mobileappweek1/screen/dashboard.dart';
 import 'package:mobileappweek1/screen/index.dart';
 import 'package:mobileappweek1/screen/login.dart';
 import 'package:mobileappweek1/screen/register.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'Login': (context) => Login(),
         'Register': (context) => Register(),
+        'Dashboard': (context) => Dashboard(),
       },
       theme: ThemeData(
         primaryColor: tColor,
