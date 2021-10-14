@@ -19,17 +19,22 @@ class Index extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('Drawer Header'),
+              child: Text(
+                'เมนูลับ(มีด)',
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
             ),
             ListTile(
-              title: const Text('Item 1'),
+              title: const Text('Dashboard'),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                Navigator.pushNamed(context, 'Dashboard');
               },
             ),
             ListTile(
-              title: const Text('Item 2'),
+              title: const Text('...'),
               onTap: () {
                 // Update the state of the app.
                 // ...

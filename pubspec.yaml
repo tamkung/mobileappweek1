@@ -19,6 +19,16 @@ dependencies:
   rflutter_alert: ^2.0.4
   http: ^0.13.3
   translator: ^0.1.7
+  
+  video_player: ^2.2.3
+  better_player: ^0.0.73
+  image_picker: ^0.8.4+1
+  location: ^4.3.0
+  geolocator: ^7.7.0
+  geocoding: ^2.0.1
+
+  #geolocation: ^1.1.2
+  youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
   flutter_test:
