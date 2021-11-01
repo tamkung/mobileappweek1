@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileappweek1/config/constant.dart';
 import 'package:http/http.dart' as http;
@@ -55,6 +56,11 @@ class _DashboardState extends State<Dashboard> {
         output = value;
       });
     });
+  }
+
+  Future<void> logout() async {
+    await FirebaseAuth.instance.signOut();
+    print('True');
   }
 
   @override
@@ -144,11 +150,18 @@ class _DashboardState extends State<Dashboard> {
           IconButton(
             onPressed: () async {
               callAPI();
-
               trans();
             },
             icon: Icon(Icons.refresh),
           ),
+          IconButton(
+            onPressed: () {
+              logout();
+              Navigator.of(context).pop();
+              Navigator.pushNamed(context, 'Index', arguments: []);
+            },
+            icon: Icon(Icons.logout),
+          )
         ],
         backgroundColor: pColor,
       ),

@@ -1,15 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mobileappweek1/backend/database.dart';
 import 'package:mobileappweek1/config/constant.dart';
+import 'package:mobileappweek1/screen/firebaseLogin.dart';
+import 'package:mobileappweek1/screen/login.dart';
 
-class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+class FirebaseRegister extends StatefulWidget {
+  const FirebaseRegister({Key? key}) : super(key: key);
 
   @override
-  _RegisterState createState() => _RegisterState();
+  _FirebaseRegisterState createState() => _FirebaseRegisterState();
 }
 
-class _RegisterState extends State<Register> {
+class _FirebaseRegisterState extends State<FirebaseRegister> {
   var name, lastname, email, password, confirmpass;
   final formKey = GlobalKey<FormState>();
 
@@ -18,7 +20,7 @@ class _RegisterState extends State<Register> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Regsiter'),
+          title: Text('Regsiter Firebase'),
           backgroundColor: pColor,
         ),
         body: Form(
@@ -26,8 +28,8 @@ class _RegisterState extends State<Register> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                txtName(),
-                txtLastname(),
+                //txtName(),
+                //txtLastname(),
                 txtEmail(),
                 txtPass(),
                 txtConfirmPass(),
@@ -177,17 +179,65 @@ class _RegisterState extends State<Register> {
           primary: tColor,
         ),
         onPressed: () {
-          print('Hello World');
-
-          var local = DBlocal();
-
           if (formKey.currentState!.validate()) {
             formKey.currentState!.save();
-            local.register(name, lastname, email, confirmpass);
-            formKey.currentState!.reset();
-            Navigator.pushNamed(context, 'Login');
+            registerFirebase();
           }
         },
         child: Text('Submit'),
       );
+
+  Future<void> registerFirebase() async {
+    //ส่ง Email กับ pass ไปยัง Firebase
+    try {
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: confirmpass)
+          .then((value) {
+        //เรียกหน้าใหม่
+        MaterialPageRoute materialPageRoute = MaterialPageRoute(
+            builder: (BuildContext context) => FirebaseLogin());
+        Navigator.of(context).pushAndRemoveUntil(
+            materialPageRoute, (Route<dynamic> route) => false);
+      }).catchError((onError) {
+        print(onError);
+        var msg = '${onError}';
+        showAlert(msg);
+      });
+    } catch (e) {
+      //print(e);
+    }
+  }
+
+  void showAlert(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: ListTile(
+            leading: Icon(
+              Icons.error,
+              color: Colors.red,
+              size: 50,
+            ),
+            title: Text(
+              "พบข้อผิดพลาด",
+              style: TextStyle(
+                fontSize: 26,
+                color: Colors.red,
+              ),
+            ),
+          ),
+          content: Text(message),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("ปิด"),
+            )
+          ],
+        );
+      },
+    );
+  }
 }
