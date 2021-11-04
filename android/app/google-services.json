@@ -2,6 +2,7 @@
   "project_info": {
     "project_number": "863349723169",
     "project_id": "mobileapp-e6a86",
+    "firebase_url": "https://mobileapp-e6a86-default-rtdb.asia-southeast1.firebasedatabase.app",
     "storage_bucket": "mobileapp-e6a86.appspot.com"
   },
   "client": [

@@ -34,10 +34,9 @@ class Index extends StatelessWidget {
               },
             ),
             ListTile(
-              title: const Text('...'),
+              title: const Text('Store'),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                Navigator.pushNamed(context, 'Store');
               },
             ),
           ],

@@ -133,6 +133,23 @@ class _DashboardState extends State<Dashboard> {
                 Navigator.pushNamed(context, 'Location');
               },
             ),
+            ListTile(
+              title: Text(
+                'Store',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              leading: Icon(
+                Icons.store,
+                color: Colors.yellow[700],
+                size: 30,
+              ),
+              onTap: () {
+                print('Store');
+                Navigator.pushNamed(context, 'Store');
+              },
+            ),
           ],
         ),
       ),
