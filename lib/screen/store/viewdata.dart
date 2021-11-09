@@ -34,55 +34,56 @@ class _ViewDataState extends State<ViewData> {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-        child: FirebaseAnimatedList(
-      query: dbfirebase,
-      itemBuilder: (context, snapshot, animation, index) {
-        return Container(
-          height: 100,
-          child: Padding(
-            padding: EdgeInsets.all(3.0),
-            child: Card(
-              elevation: 5,
-              child: ListTile(
-                leading: CircleAvatar(
-                  child: Icon(Icons.computer),
-                  backgroundColor: pColor,
-                ),
-                title: Text('${snapshot.value['product']}'),
-                subtitle: Row(
-                  children: [
-                    Text('ราคา : ' + '${snapshot.value['price']}'),
-                    Text(' สถานะ : ' + '${snapshot.value['status']}'),
-                  ],
-                ),
-                trailing: Column(
-                  children: [
-                    Expanded(
-                      child: IconButton(
-                        icon: Icon(Icons.delete),
-                        onPressed: () {
-                          print('ลบข้อมูล');
-                          dbfirebase.child(snapshot.key!).remove();
-                        },
+      child: FirebaseAnimatedList(
+        query: dbfirebase,
+        itemBuilder: (context, snapshot, animation, index) {
+          return Container(
+            height: 100,
+            child: Padding(
+              padding: EdgeInsets.all(3.0),
+              child: Card(
+                elevation: 5,
+                child: ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.computer),
+                    backgroundColor: pColor,
+                  ),
+                  title: Text('${snapshot.value['product']}'),
+                  subtitle: Row(
+                    children: [
+                      Text('ราคา : ' + '${snapshot.value['price']}'),
+                      Text(' สถานะ : ' + '${snapshot.value['status']}'),
+                    ],
+                  ),
+                  trailing: Column(
+                    children: [
+                      Expanded(
+                        child: IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () {
+                            print('ลบข้อมูล');
+                            dbfirebase.child(snapshot.key!).remove();
+                          },
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: IconButton(
-                        icon: Icon(Icons.edit),
-                        onPressed: () {
-                          print('แก้ไขข้อมูล');
-                          print(snapshot.key!);
-                          updateData(snapshot.key!);
-                        },
+                      Expanded(
+                        child: IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            print('แก้ไขข้อมูล');
+                            print(snapshot.key!);
+                            updateData(snapshot.key!);
+                          },
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      },
-    ));
+          );
+        },
+      ),
+    );
   }
 }
