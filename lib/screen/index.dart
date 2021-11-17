@@ -20,7 +20,7 @@ class Index extends StatelessWidget {
                 color: Colors.blue,
               ),
               child: Text(
-                'เมนูลับ(มีด)',
+                'เมนูลับ',
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -37,6 +37,12 @@ class Index extends StatelessWidget {
               title: const Text('Store'),
               onTap: () {
                 Navigator.pushNamed(context, 'Store');
+              },
+            ),
+            ListTile(
+              title: const Text('Date'),
+              onTap: () {
+                Navigator.pushNamed(context, 'MyAppDate');
               },
             ),
           ],

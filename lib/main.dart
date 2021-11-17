@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileappweek1/config/constant.dart';
+import 'package:mobileappweek1/screen/backup/flow.dart';
 import 'package:mobileappweek1/screen/dashboard.dart';
+import 'package:mobileappweek1/screen/backup/date.dart';
 import 'package:mobileappweek1/screen/firebaseLogin.dart';
 import 'package:mobileappweek1/screen/firebaseRegistor.dart';
 import 'package:mobileappweek1/screen/index.dart';
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Index(),
+      home: Index(), //MyHomePage(),
       routes: {
         'Index': (context) => Index(),
         'Login': (context) => FirebaseLogin(),
@@ -35,6 +37,7 @@ class MyApp extends StatelessWidget {
         'Image': (context) => PackageImage(),
         'Location': (context) => PackageLocation(),
         'Store': (context) => Store(),
+        'MyAppDate': (context) => HomePage(),
       },
       theme: ThemeData(
         primaryColor: tColor,
